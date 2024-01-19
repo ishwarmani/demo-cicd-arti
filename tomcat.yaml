@@ -15,13 +15,8 @@
     - name: Clone GitHub repository (specify release)
       git:
         repo: https://github.com/ishwarmani/demo-cicd-arti.git  # Replace with your GitHub repository URL
-        dest: /opt/apache-tomcat-10.1.18/webapps/
+        dest: /tmp/ishwardeploy
         version: release  
 
     - name: Run ls command to check copied files
-      command: ls /opt/apache-tomcat-10.1.18/webapps/
-      register: ls_output  
-
-    - name: Display ls output
-      debug:
-        var: ls_output.stdout
+      command: cp -v /tmp/ishwardeploy/demo-cicd.war /opt/apache-tomcat-10.1.18/webapps/
